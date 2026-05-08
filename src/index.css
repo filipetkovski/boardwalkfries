@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&family=Space+Grotesk:wght@300;500;700&family=Cormorant+Garamond:ital,wght@1,400&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-mustard: #FACC15;
+  --color-deepblue: #005DAA;
+  --color-classicred: #DC2626;
+  --font-sans: "Outfit", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Space Grotesk", sans-serif;
+  --font-serif: "Cormorant Garamond", serif;
+}
+
+@layer base {
+  body {
+    @apply bg-[#FDFCF0] text-deepblue antialiased selection:bg-mustard/30;
+  }
+}
+
+.glass {
+  @apply backdrop-blur-md bg-white/10 border border-white/20 shadow-xl;
+}
+
+.glass-dark {
+  @apply backdrop-blur-md bg-black/20 border border-white/10 shadow-xl;
+}
+
+.pixel-grid {
+  background-image: radial-gradient(circle, currentColor 1px, transparent 1px);
+  background-size: 24px 24px;
+}

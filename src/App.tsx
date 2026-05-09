@@ -364,11 +364,11 @@ export default function App() {
           ].map((stat, i) => (
             <motion.div 
               key={i}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
-              className="text-center space-y-2 p-6 rounded-3xl bg-white border border-deepblue/5 shadow-sm"
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.8, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] }}
+              className="text-center space-y-2 p-6 rounded-3xl bg-white border border-deepblue/5 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all"
             >
               <div className="flex justify-center mb-2">{stat.icon}</div>
               <div className="text-3xl font-display font-extrabold text-deepblue uppercase italic tracking-tighter">{stat.value}</div>
@@ -379,10 +379,16 @@ export default function App() {
       </section>
 
       {/* Our Story Section */}
-      <section id="our-story" className="py-24 px-6 overflow-hidden relative">
+      <section id="our-story" className="py-32 px-6 overflow-hidden relative">
         <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
-          <div className="relative space-y-8">
-            <div className="inline-block bg-mustard/10 text-mustard px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest">
+          <motion.div 
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+            className="relative space-y-8"
+          >
+            <div className="inline-block bg-mustard/10 text-mustard px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest leading-none">
               A Bethany Beach Legend
             </div>
             <h2 className="text-5xl md:text-7xl font-display font-extrabold text-deepblue leading-tight uppercase italic tracking-tighter">
@@ -418,13 +424,20 @@ export default function App() {
                 <span className="opacity-60 font-medium">3 Generations of Service</span>
               </div>
             </div>
-          </div>
+          </motion.div>
 
-          <div className="relative">
+          <motion.div 
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+            className="relative"
+          >
             <motion.div 
-               initial={{ opacity: 0, scale: 0.95 }}
+               initial={{ opacity: 0, scale: 0.9 }}
                whileInView={{ opacity: 1, scale: 1 }}
                viewport={{ once: true }}
+               transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
                className="relative z-10 w-full aspect-[4/5] rounded-[3rem] overflow-hidden shadow-2xl border-8 border-white"
             >
               <img 
@@ -443,7 +456,7 @@ export default function App() {
             {/* 90s Pixel Grid Accent */}
             <div className="absolute -top-10 -left-10 w-40 h-40 pixel-grid text-mustard/20 z-0" />
             <div className="absolute -bottom-10 -right-10 w-60 h-60 bg-classicred/5 rounded-full blur-3xl z-0" />
-          </div>
+          </motion.div>
         </div>
       </section>
 
@@ -469,26 +482,30 @@ export default function App() {
             {HIGHLIGHT_ITEMS.map((item, index) => (
               <motion.div 
                 key={index}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="group relative"
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.8, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
+                className="group relative flex flex-col items-center text-center"
               >
-                <div className="overflow-hidden rounded-3xl aspect-[4/5] mb-6 relative">
+                <div className="overflow-hidden rounded-3xl aspect-[4/5] w-full mb-8 relative shadow-lg group-hover:shadow-2xl transition-all">
                   <img 
                     src={item.image} 
                     alt={item.name} 
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" 
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000 ease-out" 
                     referrerPolicy="no-referrer"
                   />
                   <div className="absolute top-4 left-4">
-                    <span className="bg-classicred text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full">{item.tag}</span>
+                    <span className="bg-classicred text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full shadow-lg border border-white/20">{item.tag}</span>
                   </div>
                 </div>
-                <h3 className="text-2xl font-display font-extrabold uppercase italic mb-2">{item.name}</h3>
-                <p className="text-white/60 text-sm mb-4 leading-relaxed font-medium">{item.description}</p>
-                <div className="text-mustard font-display font-bold text-xl">{item.price}</div>
+                <div className="flex-1 flex flex-col items-center">
+                  <h3 className="text-2xl font-display font-extrabold uppercase italic mb-3 tracking-tighter text-white group-hover:text-mustard transition-colors leading-none">{item.name}</h3>
+                  <p className="text-white/60 text-sm mb-6 leading-relaxed font-medium line-clamp-3">{item.description}</p>
+                  <div className="mt-auto inline-block bg-white/10 px-6 py-2 rounded-full border border-white/10 text-mustard font-display font-black text-xl group-hover:bg-mustard group-hover:text-deepblue transition-all">
+                    {item.price}
+                  </div>
+                </div>
               </motion.div>
             ))}
           </div>
@@ -540,12 +557,19 @@ export default function App() {
       </section>
 
       {/* The Mug Program (VIP Section) */}
-      <section id="the-mug" className="py-24 px-6 relative bg-sand overflow-hidden">
-        <div className="max-w-7xl mx-auto flex flex-col items-center text-center space-y-12">
+      <section id="the-mug" className="py-32 px-6 relative bg-sand overflow-hidden">
+        <motion.div 
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+          className="max-w-7xl mx-auto flex flex-col items-center text-center space-y-12"
+        >
           <motion.div
-            initial={{ scale: 0.8, opacity: 0 }}
-            whileInView={{ scale: 1, opacity: 1 }}
+            initial={{ scale: 0.5, opacity: 0, rotate: -20 }}
+            whileInView={{ scale: 1, opacity: 1, rotate: 0 }}
             viewport={{ once: true }}
+            transition={{ duration: 1.2, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
             className="w-48 h-48 bg-mustard rounded-full flex items-center justify-center relative shadow-2xl"
           >
             <CupSoda className="w-24 h-24 text-deepblue" />
@@ -583,7 +607,7 @@ export default function App() {
               <p className="text-[10px] font-bold uppercase tracking-[0.4em] opacity-50">Authorized for use at 97 Garfield Parkway Only</p>
             </div>
           </div>
-        </div>
+        </motion.div>
 
         {/* Floating Beach Icons Overlay */}
         <div className="absolute bottom-20 right-10 opacity-10 animate-pulse">
@@ -592,9 +616,15 @@ export default function App() {
       </section>
 
       {/* Visit Us Section */}
-      <section id="find-us" className="py-24 px-6 border-t border-deepblue/10">
-        <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16">
-          <div className="space-y-12">
+      <section id="find-us" className="py-32 px-6 border-t border-deepblue/10 bg-white">
+        <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-24">
+          <motion.div 
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+            className="space-y-12"
+          >
             <div className="space-y-6">
               <h2 className="text-5xl font-display font-extrabold uppercase italic tracking-tighter leading-none">
                 On the <span className="text-mustard">Boardwalk</span> <br />
@@ -656,9 +686,13 @@ export default function App() {
                 </div>
               </div>
             </div>
-          </div>
+          </motion.div>
 
-          <a 
+          <motion.a 
+            initial={{ opacity: 0, x: 50, scale: 0.95 }}
+            whileInView={{ opacity: 1, x: 0, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
             href="https://www.google.com/maps/search/?api=1&query=Boardwalk+Fries+Bethany+Beach+97+Garfield+Parkway+Bethany+Beach+DE+19930"
             target="_blank"
             rel="noopener noreferrer"
@@ -686,7 +720,7 @@ export default function App() {
                 <MapPin className="text-mustard" size={32} />
               </div>
             </div>
-          </a>
+          </motion.a>
         </div>
       </section>
 

@@ -162,7 +162,7 @@ export default function App() {
           </span>
         </a>
         
-        <div className="hidden md:flex items-center gap-8 font-medium text-sm uppercase tracking-widest">
+        <div className="hidden lg:flex items-center gap-8 font-medium text-sm uppercase tracking-widest">
           <a href="#our-story" className={`transition-colors ${isScrolled ? 'text-deepblue hover:text-mustard' : 'text-deepblue hover:text-classicred'}`}>Our Story</a>
           <a href="#menu" className={`transition-colors uppercase ${isScrolled ? 'text-deepblue hover:text-mustard' : 'text-deepblue hover:text-classicred'}`}>Menu</a>
           <a href="#the-mug" className={`transition-colors ${isScrolled ? 'text-deepblue hover:text-mustard' : 'text-deepblue hover:text-classicred'}`}>The Mug</a>
@@ -176,7 +176,7 @@ export default function App() {
         </div>
 
         <button 
-          className={`md:hidden p-3 rounded-xl transition-all ${isScrolled ? 'bg-deepblue text-white' : 'glass text-deepblue'}`} 
+          className={`lg:hidden p-3 rounded-xl transition-all ${isScrolled ? 'bg-deepblue text-white' : 'glass text-deepblue'}`} 
           onClick={() => setIsMenuOpen(!isMenuOpen)}
         >
           {isMenuOpen ? <X size={24} /> : <MenuIcon size={24} />}
@@ -281,9 +281,9 @@ export default function App() {
           <motion.div 
             initial={{ scale: 0.9, opacity: 0, y: 20 }}
             animate={{ scale: 1, opacity: 1, y: 0 }}
-            className="relative w-full max-w-4xl bg-white rounded-[2rem] md:rounded-[2.5rem] overflow-hidden shadow-2xl flex flex-col max-h-[95vh] md:max-h-[90vh]"
+            className="relative w-full max-w-4xl bg-white rounded-[2rem] md:rounded-[2.5rem] overflow-hidden shadow-2xl flex flex-col max-h-[92vh] md:max-h-[90vh]"
           >
-            <div className="p-8 border-b border-deepblue/5 flex justify-between items-center bg-sand">
+            <div className="p-6 md:p-8 border-b border-deepblue/5 flex justify-between items-center bg-sand">
               <div>
                 <h2 className="text-4xl font-display font-black uppercase italic tracking-tighter text-deepblue">Our Full Menu</h2>
                 <p className="text-sm font-bold uppercase tracking-widest text-classicred">Original Bethany Beach Recipes</p>
@@ -296,7 +296,7 @@ export default function App() {
               </button>
             </div>
             
-            <div className="flex-1 overflow-y-auto p-8 space-y-12 bg-white">
+            <div className="flex-1 overflow-y-auto p-6 md:p-8 space-y-8 md:space-y-12 bg-white">
               {Object.entries(FULL_MENU).map(([key, section]) => (
                 <div key={key} className="space-y-6">
                   <div className="border-l-4 border-classicred pl-4">
@@ -369,7 +369,7 @@ export default function App() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="inline-block px-4 py-1 rounded-full glass border-white/30 text-white text-xs font-bold uppercase tracking-[0.3em] mb-4"
+            className="hidden sm:inline-block px-4 py-1 rounded-full glass border-white/30 text-white text-xs font-bold uppercase tracking-[0.3em] mb-4"
           >
             Est. 1997 • Bethany Beach, DE
           </motion.div>

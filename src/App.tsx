@@ -176,7 +176,7 @@ export default function App() {
         </div>
 
         <button 
-          className={`lg:hidden p-3 rounded-xl transition-all ${isScrolled ? 'bg-deepblue text-white' : 'glass text-deepblue'}`} 
+          className="lg:hidden p-3 rounded-xl transition-all text-deepblue" 
           onClick={() => setIsMenuOpen(!isMenuOpen)}
         >
           {isMenuOpen ? <X size={24} /> : <MenuIcon size={24} />}

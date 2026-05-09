@@ -363,7 +363,7 @@ export default function App() {
 
         <motion.div 
           style={{ opacity, scale }}
-          className="relative z-10 max-w-5xl text-center space-y-8 pt-12 md:pt-0"
+          className="relative z-10 max-w-5xl text-center space-y-8 pt-24 md:pt-0"
         >
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -378,7 +378,7 @@ export default function App() {
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4 }}
-            className="text-6xl sm:text-7xl md:text-8xl lg:text-[10rem] font-display font-extrabold text-white leading-[0.9] md:leading-[0.8] tracking-tighter uppercase italic"
+            className="text-7xl sm:text-8xl md:text-9xl lg:text-[10rem] font-display font-extrabold text-white leading-[0.85] md:leading-[0.8] tracking-tighter uppercase italic"
           >
             The <span className="text-mustard">Original</span> <br />
             <span className="relative inline-block">

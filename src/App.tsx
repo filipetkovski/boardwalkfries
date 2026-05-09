@@ -91,8 +91,8 @@ const BEVERAGES = [
 
 const HIGHLIGHT_ITEMS = [
   {
-    name: "Boardwalk Fresh-Cut Fries",
-    price: "$7.50 / $9.50 / $19.50",
+    name: "Bucket Boardwalk Fries",
+    price: "$19.50",
     description: "Our world-famous fries, hand-cut daily and cooked in 100% peanut oil for the ultimate boardwalk crunch.",
     tag: "Legendary",
     image: "/bucket.png"

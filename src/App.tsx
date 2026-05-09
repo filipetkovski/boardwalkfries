@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { motion, useScroll, useTransform } from 'motion/react';
+import { motion, useScroll, useTransform, AnimatePresence } from 'motion/react';
 import { 
   Waves, 
   MapPin, 
@@ -19,7 +19,8 @@ import {
   Heart,
   Droplets,
   Menu as MenuIcon,
-  X
+  X,
+  ArrowRight
 } from 'lucide-react';
 import { useState, useRef, useEffect } from 'react';
 
@@ -174,29 +175,102 @@ export default function App() {
           </a>
         </div>
 
-        <button className="md:hidden p-2" onClick={() => setIsMenuOpen(!isMenuOpen)}>
-          {isMenuOpen ? <X /> : <MenuIcon />}
+        <button 
+          className={`md:hidden p-3 rounded-xl transition-all ${isScrolled ? 'bg-deepblue text-white' : 'glass text-deepblue'}`} 
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+        >
+          {isMenuOpen ? <X size={24} /> : <MenuIcon size={24} />}
         </button>
       </nav>
 
       {/* Mobile Menu */}
-      {isMenuOpen && (
-        <motion.div 
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="fixed inset-0 z-40 bg-white flex flex-col items-center justify-center gap-8 text-2xl font-display font-bold uppercase pt-20"
-        >
-          <a href="#our-story" onClick={() => setIsMenuOpen(false)}>Our Story</a>
-          <button onClick={() => { setIsMenuModalOpen(true); setIsMenuOpen(false); }} className="uppercase">Menu</button>
-          <a href="#the-mug" onClick={() => setIsMenuOpen(false)}>The Mug</a>
-          <a href="#find-us" onClick={() => setIsMenuOpen(false)}>Find Us</a>
-          <a href="#the-mug" className="text-classicred" onClick={() => setIsMenuOpen(false)}>Join VIP Club</a>
-        </motion.div>
-      )}
+      <AnimatePresence>
+        {isMenuOpen && (
+          <motion.div 
+            initial={{ opacity: 0, x: '100%' }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: '100%' }}
+            transition={{ type: 'spring', damping: 25, stiffness: 120 }}
+            className="fixed inset-0 z-[60] bg-white flex flex-col p-8 overflow-y-auto"
+          >
+            <div className="flex justify-between items-center mb-16">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10">
+                  <img src="/icon.png" alt="Logo" className="w-full h-full object-contain" />
+                </div>
+                <span className="font-display font-black text-xl uppercase tracking-tighter">
+                  Boardwalk <span className="text-mustard">Fries</span>
+                </span>
+              </div>
+              <button 
+                onClick={() => setIsMenuOpen(false)}
+                className="w-12 h-12 bg-deepblue text-white rounded-full flex items-center justify-center"
+              >
+                <X size={24} />
+              </button>
+            </div>
+
+            <div className="flex flex-col gap-6">
+              {[
+                { name: 'Our Story', href: '#our-story' },
+                { name: 'Full Menu', action: () => setIsMenuModalOpen(true) },
+                { name: 'The Mug', href: '#the-mug' },
+                { name: 'Find Us', href: '#find-us' }
+              ].map((item, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.1 + i * 0.1 }}
+                >
+                  {item.href ? (
+                    <a 
+                      href={item.href} 
+                      onClick={() => setIsMenuOpen(false)}
+                      className="text-4xl font-display font-black uppercase italic tracking-tighter text-deepblue flex items-center justify-between group"
+                    >
+                      {item.name}
+                      <ArrowRight className="text-mustard opacity-0 group-hover:opacity-100 -translate-x-4 group-hover:translate-x-0 transition-all" />
+                    </a>
+                  ) : (
+                    <button 
+                      onClick={() => { item.action?.(); setIsMenuOpen(false); }} 
+                      className="text-4xl font-display font-black uppercase italic tracking-tighter text-deepblue flex items-center justify-between w-full text-left group"
+                    >
+                      {item.name}
+                      <ArrowRight className="text-mustard opacity-0 group-hover:opacity-100 -translate-x-4 group-hover:translate-x-0 transition-all" />
+                    </button>
+                  )}
+                </motion.div>
+              ))}
+            </div>
+
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.5 }}
+              className="mt-auto"
+            >
+              <a 
+                href="#the-mug" 
+                onClick={() => setIsMenuOpen(false)}
+                className="block w-full bg-classicred text-white py-5 rounded-2xl text-center font-black uppercase tracking-widest shadow-xl"
+              >
+                Join VIP Club
+              </a>
+              <div className="flex justify-center gap-6 mt-8 text-deepblue/40 font-bold text-xs uppercase tracking-widest">
+                <span>Bethany Beach, DE</span>
+                <span>•</span>
+                <span>Since 1997</span>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* Menu Modal */}
       {isMenuModalOpen && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-8">
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-2 md:p-8">
           <motion.div 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -207,7 +281,7 @@ export default function App() {
           <motion.div 
             initial={{ scale: 0.9, opacity: 0, y: 20 }}
             animate={{ scale: 1, opacity: 1, y: 0 }}
-            className="relative w-full max-w-4xl bg-white rounded-[2.5rem] overflow-hidden shadow-2xl flex flex-col max-h-[90vh]"
+            className="relative w-full max-w-4xl bg-white rounded-[2rem] md:rounded-[2.5rem] overflow-hidden shadow-2xl flex flex-col max-h-[95vh] md:max-h-[90vh]"
           >
             <div className="p-8 border-b border-deepblue/5 flex justify-between items-center bg-sand">
               <div>

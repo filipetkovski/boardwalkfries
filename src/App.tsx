@@ -91,8 +91,8 @@ const BEVERAGES = [
 
 const HIGHLIGHT_ITEMS = [
   {
-    name: "Bucket Boardwalk Fries",
-    price: "$19.50",
+    name: "Boardwalk Fresh-Cut Fries",
+    price: "$7.50 / $9.50 / $19.50",
     description: "Our world-famous fries, hand-cut daily and cooked in 100% peanut oil for the ultimate boardwalk crunch.",
     tag: "Legendary",
     image: "/bucket.png"
@@ -156,7 +156,7 @@ export default function App() {
           <div className="w-12 h-12 flex items-center justify-center overflow-hidden">
             <img src="/icon.png" alt="Boardwalk Fries Logo" className="w-full h-full object-contain" />
           </div>
-          <span className={`font-display font-extrabold text-2xl tracking-tighter uppercase whitespace-nowrap transition-colors ${isScrolled ? 'text-deepblue' : 'text-deepblue'}`}>
+          <span className={`font-display font-extrabold text-xl sm:text-2xl tracking-tighter uppercase whitespace-nowrap transition-colors ${isScrolled ? 'text-deepblue' : 'text-deepblue'}`}>
             Boardwalk <span className="text-mustard group-hover:text-classicred transition-colors">Fries</span>
           </span>
         </a>
@@ -304,7 +304,7 @@ export default function App() {
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4 }}
-            className="text-6xl md:text-[9rem] font-display font-extrabold text-white leading-[0.8] tracking-tighter uppercase italic"
+            className="text-5xl sm:text-6xl md:text-8xl lg:text-[9rem] font-display font-extrabold text-white leading-[0.9] md:leading-[0.8] tracking-tighter uppercase italic"
           >
             The <span className="text-mustard">Original</span> <br />
             <span className="relative inline-block">
@@ -379,8 +379,8 @@ export default function App() {
       </section>
 
       {/* Our Story Section */}
-      <section id="our-story" className="py-32 px-6 overflow-hidden relative">
-        <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
+      <section id="our-story" className="py-20 md:py-32 px-6 overflow-hidden relative">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           <motion.div 
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -461,10 +461,10 @@ export default function App() {
       </section>
 
       {/* Menu Highlight Section */}
-      <section id="menu" className="py-24 bg-deepblue relative text-white">
+      <section id="menu" className="py-20 md:py-24 bg-deepblue relative text-white">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-20 space-y-8">
-            <h2 className="text-5xl md:text-[6rem] font-display font-extrabold uppercase italic tracking-tighter leading-none mb-4">
+          <div className="text-center mb-16 md:mb-20 space-y-6 md:space-y-8">
+            <h2 className="text-4xl sm:text-5xl md:text-[6rem] font-display font-extrabold uppercase italic tracking-tighter leading-none mb-4">
               Fresh From <span className="text-mustard">The Fryer</span>
             </h2>
             <p className="text-white/60 text-lg uppercase tracking-widest font-bold">Hand-cut. Hand-salted. Every Single Time.</p>
@@ -557,20 +557,20 @@ export default function App() {
       </section>
 
       {/* The Mug Program (VIP Section) */}
-      <section id="the-mug" className="py-32 px-6 relative bg-sand overflow-hidden">
+      <section id="the-mug" className="py-20 md:py-32 px-6 relative bg-sand overflow-hidden">
         <motion.div 
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-          className="max-w-7xl mx-auto flex flex-col items-center text-center space-y-12"
+          className="max-w-7xl mx-auto flex flex-col items-center text-center space-y-10 md:space-y-12"
         >
           <motion.div
             initial={{ scale: 0.5, opacity: 0, rotate: -20 }}
             whileInView={{ scale: 1, opacity: 1, rotate: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 1.2, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-            className="w-48 h-48 bg-mustard rounded-full flex items-center justify-center relative shadow-2xl"
+            className="w-40 h-40 md:w-48 md:h-48 bg-mustard rounded-full flex items-center justify-center relative shadow-2xl"
           >
             <CupSoda className="w-24 h-24 text-deepblue" />
             <motion.div 
@@ -581,7 +581,7 @@ export default function App() {
           </motion.div>
 
           <div className="space-y-6 max-w-3xl">
-            <h2 className="text-5xl md:text-8xl font-display font-extrabold uppercase italic tracking-tighter text-classicred">
+            <h2 className="text-4xl sm:text-5xl md:text-8xl font-display font-extrabold uppercase italic tracking-tighter text-classicred">
               Refills For <br />
               <span className="text-deepblue underline decoration-mustard underline-offset-8 transition-all hover:decoration-classicred cursor-default">Life</span>
             </h2>
@@ -616,8 +616,8 @@ export default function App() {
       </section>
 
       {/* Visit Us Section */}
-      <section id="find-us" className="py-32 px-6 border-t border-deepblue/10 bg-white">
-        <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-24">
+      <section id="find-us" className="py-20 md:py-32 px-6 border-t border-deepblue/10 bg-white">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
           <motion.div 
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}

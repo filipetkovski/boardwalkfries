@@ -270,7 +270,7 @@ export default function App() {
 
       {/* Menu Modal */}
       {isMenuModalOpen && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center p-2 md:p-8">
+        <div className="fixed inset-0 z-[100] flex items-center justify-center pt-[20px] pb-[60px] px-2 md:p-8">
           <motion.div 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -281,7 +281,7 @@ export default function App() {
           <motion.div 
             initial={{ scale: 0.9, opacity: 0, y: 20 }}
             animate={{ scale: 1, opacity: 1, y: 0 }}
-            className="relative w-full max-w-4xl bg-white rounded-[2rem] md:rounded-[2.5rem] overflow-hidden shadow-2xl flex flex-col max-h-[92vh] md:max-h-[90vh]"
+            className="relative w-full max-w-4xl bg-white rounded-[2rem] md:rounded-[2.5rem] overflow-hidden shadow-2xl flex flex-col max-h-full md:max-h-[90vh]"
           >
             <div className="p-6 md:p-8 border-b border-deepblue/5 flex justify-between items-center bg-sand">
               <div>

@@ -549,10 +549,14 @@ export default function App() {
             {HIGHLIGHT_ITEMS.map((item, index) => (
               <motion.div 
                 key={index}
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.2 }}
-                transition={{ duration: 0.8, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
+                initial={{ opacity: 0, y: 10, scale: 0.98 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                viewport={{ once: true, amount: 0.05 }}
+                transition={{ 
+                  duration: 0.6, 
+                  delay: typeof window !== 'undefined' && window.innerWidth < 768 ? 0 : index * 0.1, 
+                  ease: "easeOut" 
+                }}
                 className="group relative flex flex-col items-center text-center"
               >
                 <div className="overflow-hidden rounded-3xl aspect-[4/5] w-full mb-8 relative shadow-lg group-hover:shadow-2xl transition-all">

@@ -152,21 +152,21 @@ export default function App() {
   return (
     <div className="font-sans text-deepblue selection:bg-mustard/30 overflow-x-hidden">
       {/* Navigation */}
-      <nav className={`fixed top-0 left-0 w-full z-50 px-6 py-1 flex justify-between items-center transition-all duration-300 ${isScrolled ? 'bg-white shadow-xl py-0' : 'glass'}`}>
+      <nav className={`fixed top-0 left-0 w-full z-50 px-6 py-2 flex justify-between items-center transition-all duration-300 bg-white shadow-md ${isScrolled ? 'py-1' : 'py-2'}`}>
         <a href="#" className="flex items-center gap-3 group">
           <div className="w-12 h-12 flex items-center justify-center overflow-hidden">
             <img src="/icon.png" alt="Boardwalk Fries Logo" className="w-full h-full object-contain" />
           </div>
-          <span className={`font-display font-extrabold text-xl sm:text-2xl tracking-tighter uppercase whitespace-nowrap transition-colors ${isScrolled ? 'text-deepblue' : 'text-deepblue'}`}>
+          <span className="font-display font-extrabold text-xl sm:text-2xl tracking-tighter uppercase whitespace-nowrap transition-colors text-deepblue">
             Boardwalk <span className="text-mustard group-hover:text-classicred transition-colors">Fries</span>
           </span>
         </a>
         
         <div className="hidden lg:flex items-center gap-8 font-medium text-sm uppercase tracking-widest">
-          <a href="#our-story" className={`transition-colors ${isScrolled ? 'text-deepblue hover:text-mustard' : 'text-deepblue hover:text-classicred'}`}>Our Story</a>
-          <a href="#menu" className={`transition-colors uppercase ${isScrolled ? 'text-deepblue hover:text-mustard' : 'text-deepblue hover:text-classicred'}`}>Menu</a>
-          <a href="#the-mug" className={`transition-colors ${isScrolled ? 'text-deepblue hover:text-mustard' : 'text-deepblue hover:text-classicred'}`}>The Mug</a>
-          <a href="#find-us" className={`transition-colors ${isScrolled ? 'text-deepblue hover:text-mustard' : 'text-deepblue hover:text-classicred'}`}>Find Us</a>
+          <a href="#our-story" className="transition-colors text-deepblue hover:text-mustard">Our Story</a>
+          <a href="#menu" className="transition-colors uppercase text-deepblue hover:text-mustard">Menu</a>
+          <a href="#the-mug" className="transition-colors text-deepblue hover:text-mustard">The Mug</a>
+          <a href="#find-us" className="transition-colors text-deepblue hover:text-mustard">Find Us</a>
           <a 
             href="#the-mug"
             className="bg-mustard text-deepblue px-6 py-2 rounded-full font-black uppercase text-sm shadow-[4px_4px_0px_#DC2626] hover:scale-105 transition-all active:translate-x-[2px] active:translate-y-[2px] active:shadow-none"
@@ -351,7 +351,7 @@ export default function App() {
         <div className="absolute inset-0 z-0 overflow-hidden">
           <img 
             src="/bethany.jpg" 
-            className="w-full h-full object-cover opacity-60 scale-110"
+            className="w-full h-full object-cover md:object-center object-left opacity-60 scale-110"
             alt="Bethany Beach Boardwalk"
             referrerPolicy="no-referrer"
           />
@@ -363,22 +363,14 @@ export default function App() {
 
         <motion.div 
           style={{ opacity, scale }}
-          className="relative z-10 max-w-5xl text-center space-y-8 pt-24 md:pt-0"
+          className="relative z-10 w-full max-w-7xl mx-auto text-center space-y-8 pt-24 md:pt-0 px-4"
         >
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="hidden sm:inline-block px-4 py-1 rounded-full glass border-white/30 text-white text-xs font-bold uppercase tracking-[0.3em] mb-4"
-          >
-            Est. 1997 • Bethany Beach, DE
-          </motion.div>
           
           <motion.h1 
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4 }}
-            className="text-7xl sm:text-8xl md:text-9xl lg:text-[10rem] font-display font-extrabold text-white leading-[0.85] md:leading-[0.8] tracking-tighter uppercase italic"
+            className="text-6xl sm:text-8xl md:text-9xl lg:text-[10rem] font-display font-extrabold text-white leading-[0.85] md:leading-[0.8] tracking-tighter uppercase italic mx-auto"
           >
             The <span className="text-mustard">Original</span> <br />
             <span className="relative inline-block">

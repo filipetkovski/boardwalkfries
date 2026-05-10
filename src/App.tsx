@@ -370,7 +370,7 @@ export default function App() {
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4 }}
-            className="text-6xl sm:text-8xl md:text-9xl lg:text-[10rem] font-display font-extrabold text-white leading-[0.85] md:leading-[0.8] tracking-tighter uppercase italic mx-auto"
+            className="text-6xl sm:text-7xl md:text-8xl lg:text-[8rem] font-display font-extrabold text-white leading-[0.85] md:leading-[0.8] tracking-tighter uppercase italic mx-auto"
           >
             The <span className="text-mustard">Original</span> <br />
             <span className="relative inline-block">
@@ -432,9 +432,10 @@ export default function App() {
               key={i}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
+              whileHover={{ y: -4, transition: { duration: 0.2 } }}
+              viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 0.8, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] }}
-              className="text-center space-y-2 p-6 rounded-3xl bg-white border border-deepblue/5 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all"
+              className="text-center space-y-2 p-6 rounded-3xl bg-white border border-deepblue/5 shadow-sm hover:shadow-xl transition-shadow"
             >
               <div className="flex justify-center mb-2">{stat.icon}</div>
               <div className="text-3xl font-display font-extrabold text-deepblue uppercase italic tracking-tighter">{stat.value}</div>
@@ -550,7 +551,7 @@ export default function App() {
                 key={index}
                 initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
+                viewport={{ once: true, amount: 0.2 }}
                 transition={{ duration: 0.8, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
                 className="group relative flex flex-col items-center text-center"
               >
